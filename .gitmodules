@@ -1,0 +1,4 @@
+[submodule "include/sdl"]
+	path = include/sdl
+	url = https://github.com/libsdl-org/SDL.git2
+	branch = release-2.26.x
