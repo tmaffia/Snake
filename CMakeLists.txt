@@ -11,11 +11,20 @@ endif()
 
 project ("Snake")
 
+include(FetchContent)
+FetchContent_Declare(SFML
+    GIT_REPOSITORY https://github.com/SFML/SFML.git
+    GIT_TAG 2.6.x)
+FetchContent_MakeAvailable(SFML)
+
 # Add source to this project's executable.
 add_executable (Snake "src/Snake.cpp" "src/Snake.h")
+target_link_libraries(Snake PRIVATE sfml-graphics)
 
-target_include_directories(Snake PRIVATE "include/")
-
+if (WIN32 AND BUILD_SHARED_LIBS)
+    add_custom_command(TARGET Snake POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_RUNTIME_DLLS:Snake> $<TARGET_FILE_DIR:Snake> COMMAND_EXPAND_LISTS)
+endif()
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET Snake PROPERTY CXX_STANDARD 20)
