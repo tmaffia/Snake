@@ -399,3 +399,6 @@ FodyWeavers.xsd
 
 # Out folder
 out/
+
+# Assets
+assets/

@@ -18,7 +18,7 @@ FetchContent_Declare(SFML
 FetchContent_MakeAvailable(SFML)
 
 # Add source to this project's executable.
-add_executable (Snake "src/Snake.cpp" "src/Snake.h")
+add_executable (Snake "src/snake/Snake.cpp" "src/snake/Snake.h" "src/snake/Game.h" "src/snake/Game.cpp")
 target_link_libraries(Snake PRIVATE sfml-graphics)
 
 if (WIN32 AND BUILD_SHARED_LIBS)
