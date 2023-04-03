@@ -397,8 +397,9 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-# Out folder
+# Build and Out folder
 out/
+build/
 
 # Assets
 assets/

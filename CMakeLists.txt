@@ -21,6 +21,8 @@ FetchContent_MakeAvailable(SFML)
 add_executable (Snake "src/snake/Snake.cpp" "src/snake/Snake.h" "src/snake/Game.h" "src/snake/Game.cpp")
 target_link_libraries(Snake PRIVATE sfml-graphics)
 
+file(COPY "assets" DESTINATION ${CMAKE_BINARY_DIR})
+
 if (WIN32 AND BUILD_SHARED_LIBS)
     add_custom_command(TARGET Snake POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_RUNTIME_DLLS:Snake> $<TARGET_FILE_DIR:Snake> COMMAND_EXPAND_LISTS)
