@@ -4,10 +4,12 @@ Game::Game()
 	: mWindow(sf::VideoMode(640, 480), "Snake")
 	, mPlayer()
 {
-	sf::Vector2f rectangleSize(10.f, 10.f);
-	mPlayer.setSize(rectangleSize);
+	mWindow.setFramerateLimit(60);
+
+	if (!mPlayerTexture.loadFromFile(mPlayerImage))
+		std::cout << "Error Loading Player Texture" << std::endl;
+	mPlayer.setTexture(mPlayerTexture);
 	mPlayer.setPosition(100.f, 100.f);
-	mPlayer.setFillColor(sf::Color::Cyan);
 }
 
 void Game::run()
@@ -44,19 +46,20 @@ void Game::update()
 {
 	sf::Vector2f movement(0.f, 0.f);
 	if (mIsMovingUp)
-		movement.y -= 1.f;
+		movement.y -= 3.f;
 	if (mIsMovingDown)
-		movement.y += 1.f;
+		movement.y += 3.f;
 	if (mIsMovingLeft)
-		movement.x -= 1.f;
+		movement.x -= 3.f;
 	if (mIsMovingRight)
-		movement.x += 1.f;
+		movement.x += 3.f;
 
 	mPlayer.move(movement);
 }
 
 void Game::render()
 {
+
 	mWindow.clear();
 	mWindow.draw(mPlayer);
 	mWindow.display();
